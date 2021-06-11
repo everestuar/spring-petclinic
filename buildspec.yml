@@ -8,6 +8,7 @@ phases:
     commands:
       - AWS_ACC=$(echo $CODEBUILD_BUILD_ARN | cut -d':' -f5)
       - REPOSITORY_URI=$AWS_ACC.dkr.ecr.$AWS_REGION.amazonaws.com
+      - docker login -u $dockerhub_username -p $dockerhub_password
   build:
     commands:
       - echo Build started on `date`

@@ -118,6 +118,12 @@ Resources:
           - Name: REPO
             Type: PLAINTEXT
             Value: !Ref ECRRepository
+          - Name: dockerhub_username
+            Type: SECRETS_MANAGER
+            Value: dockerhub:username
+          - Name: dockerhub_password
+            Type: SECRETS_MANAGER
+            Value: dockerhub:password
       LogsConfig:
         CloudWatchLogs: 
           GroupName: !Sub '${AWS::StackName}-group'
@@ -308,6 +314,7 @@ Resources:
                   - logs:CreateLogStream
                   - logs:PutLogEvents
                   - ecr:GetAuthorizationToken
+                  - secretsmanager:GetSecretValue
         - PolicyName: ecr
           PolicyDocument:
             Version: 2012-10-17
