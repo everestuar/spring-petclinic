@@ -73,6 +73,7 @@ Resources:
                   - logs:CreateLogStream
                   - logs:PutLogEvents
                   - ecr:GetAuthorizationToken
+                  - secretsmanager:GetSecretValue
         - PolicyName: ecr
           PolicyDocument:
             Version: 2012-10-17
